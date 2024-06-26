@@ -230,7 +230,6 @@ void Command_2(char* arrayStr[])
       cout << "_______________________" << endl;
       OutTimeAndComp(time, comp, arrayStr[5]);
 
-
       Write_File(a, n, "output.txt");
       delete []a;
 }

@@ -51,7 +51,7 @@ void InsertionSort (int *arr, int n, long long &comp)
 
 //3
 // Function to perform shell sort on an array
-void ShellSort (int *arr, int n, long long &comp) 
+void ShellSort(int *arr, int n, long long &comp) 
 {
     // Start with a big gap, then reduce the gap
     for (int gap = n/2; ++comp && gap > 0; gap /= 2) 
@@ -78,7 +78,7 @@ void ShellSort (int *arr, int n, long long &comp)
 
 //4
 // Function to perform bubble sort on an array
-void BubbleSort (int *arr, int n, long long &comp) 
+void BubbleSort(int *arr, int n, long long &comp) 
 {
     // Perform n-1 passes through the array
     for (int i = n - 1; ++comp && i > 0; i--) 
@@ -96,7 +96,7 @@ void BubbleSort (int *arr, int n, long long &comp)
 
 
 // Function to rebuild the heap
-void HeapRebuild (int pos, int *arr, int n, long long &comp) 
+void HeapRebuild(int pos, int *arr, int n, long long &comp) 
 {
     int k = pos;
     bool isHeap = false;
@@ -135,7 +135,7 @@ void HeapRebuild (int pos, int *arr, int n, long long &comp)
 }
 
 // Function to construct a heap from an array
-void HeapConstruct (int *arr, int n, long long &comp) 
+void HeapConstruct(int *arr, int n, long long &comp) 
 {
     int index = n/2 - 1;
     
@@ -170,7 +170,7 @@ void HeapSort (int *arr, int n, long long &comp)
 
 //6
 // Function to merge two halves of an array
-void Merge (int *arr, int left, int mid, int right, long long &comp) 
+void Merge(int *arr, int left, int mid, int right, long long &comp) 
 {
     // Size of temporary arrays
     int leftSize = mid - left + 1;
@@ -235,15 +235,15 @@ void Merge (int *arr, int left, int mid, int right, long long &comp)
 }
 
 // Function to perform merge sort on an array
-void MergeSort (int *arr, int left, int right, long long &comp) 
+void MergeSort(int *arr, int n, int left, int right, long long &comp) 
 {
     if (++comp && left < right) 
     {
         int mid = left + (right - left) / 2;
         // Recursively sort the first half
-        MergeSort (arr, left, mid, comp);
+        MergeSort (arr, n, left, mid, comp);
         // Recursively sort the second half
-        MergeSort (arr, mid + 1, right, comp);
+        MergeSort (arr, n, mid + 1, right, comp);
         // Merge the two halves
         Merge (arr, left, mid, right, comp);
     }
@@ -251,7 +251,7 @@ void MergeSort (int *arr, int left, int right, long long &comp)
 
 //7
 // Function to partition the array for quick sort
-int Partition (int *arr, int low, int high, long long &comp) 
+int Partition(int *arr, int low, int high, long long &comp) 
 {
     int pivot = arr[low];
     int i = low - 1;
@@ -273,14 +273,14 @@ int Partition (int *arr, int low, int high, long long &comp)
 }
 
 // Function to perform quick sort on an array
-void QuickSort (int *arr, int low, int high, long long &comp) 
+void QuickSort(int *arr, int n, int low, int high, long long &comp) 
 {
     if (++comp && low < high) 
     {
         int pi = Partition (arr, low, high, comp);
         // Recursively sort elements before partition and after partition
-        QuickSort (arr, low, pi - 1, comp);
-        QuickSort (arr, pi + 1, high, comp);
+        QuickSort (arr, n, low, pi - 1, comp);
+        QuickSort (arr, n, pi + 1, high, comp);
     }
 }
 

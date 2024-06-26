@@ -54,34 +54,34 @@ string ShowNameSort(string nameSort)
 int ShowIntDataType(string dataType)
 {
       if(dataType == "-rand")	
-		return 1;
+		return 0;
 	if(dataType == "-nsorted")	
-	      return 2;
+	      return 1;
 	if(dataType =="-sorted")	
-		return 3;
+		return 2;
       else	
-		return 4;
+		return 3;
 }
 
 string ShowStringNameDataType(int DataType)
 {
       string s = "\0";
-      if(DataType == 1)
+      if(DataType == 0)
       {
             s = "Randomize";
             return s;   
       }
-      if(DataType == 2)
+      if(DataType == 1)
       {
             s = "Nearly Sorted";
             return s;
       }
-      if(DataType == 3)
+      if(DataType == 2)
       {
             s = "Sorted";
             return s;
       }
-      if(DataType == 4)
+      if(DataType == 3)
       {
             s = "Reversed";
             return s;
