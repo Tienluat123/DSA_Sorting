@@ -1,5 +1,10 @@
 #include "Header.h"
 
+//How to used
+
+//Command
+//g++ -std=c++17 Main.cpp SortFunction.cpp ShowName.cpp DataGenerator.cpp -o <name>
+//./<name> -a quick-sort 7000 -comp 
 
 // Function to find and execute the appropriate sorting algorithm
 void FindSort(int *arr, int n, string nameSort, long long &time, long long &comp)
@@ -62,11 +67,11 @@ void FindSort(int *arr, int n, string nameSort, long long &time, long long &comp
       }
       else if(nameSort == "radix-sort")
       {
-            // auto start = high_resolution_clock::now();
-            // RadixSort(arr, n, comp);
-            // auto end = high_resolution_clock::now();
-            // auto duration = duration_cast<microseconds>(end - start);
-            // time = duration.count();
+            auto start = high_resolution_clock::now();
+            RadixSort(arr, 0, n, comp);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(end - start);
+            time = duration.count();
       }
       else if(nameSort == "counting-sort")
       {
@@ -218,7 +223,7 @@ void Command_2(char* arrayStr[])
       a = new int[n];
       long long time;
       long long comp;
-      int dataType = ShowIntDataType(arrayStr[3]);
+      int dataType = ShowIntDataType(arrayStr[4]);
       GenerateData(a, n, dataType);
 
 
@@ -247,7 +252,7 @@ void Command_3(char* arrayStr[])
       cout << "Input size: " << n << endl << endl;
 
 
-      for(int i = 1; i <= 4; i++)
+      for(int i = 0; i <= 3; i++)
       {
             int *a = NULL;
             a = new int[n];
@@ -366,12 +371,14 @@ int main(int numStr, char* arrayStr[])
       {
             if(numStr == 5)
             {
-                  if(arrayStr[4][0] <= '9' && arrayStr[4][0] >= '0')
+                  if(arrayStr[3][0] <= '9' && arrayStr[3][0] >= '0')
                   {
                         Command_3(arrayStr);
                   }
-                  else 
+                  else
+                  { 
                         Command_1(arrayStr);
+                  }
 
             }
             else if(numStr == 6)

@@ -43,7 +43,7 @@ void BubbleSort(int *arr, int n, long long &comp);
 void MergeSort(int *arr, int n, int left, int right, long long &comp);
 void QuickSort(int *arr, int n, int left, int right, long long &comp);
 void ShakerSort(int *arr, int n, long long &comp);
-void RadixSort(int *arr, int n, long long &comp);
+void RadixSort(int *arr, int n, int digit, long long &comp);
 void HeapSort(int *arr, int n, long long &comp);
 void ShellSort(int *arr, int n, long long &comp);
 void CountingSort(int *arr, int n, long long &comp);
