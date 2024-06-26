@@ -2,7 +2,7 @@
 
 string ShowNameSort(string nameSort)
 {
-      string s;
+      string s = "\0";
       if(nameSort == "selection-sort")
       {
             s = "Selection Sort";
@@ -48,6 +48,7 @@ string ShowNameSort(string nameSort)
             s = "Counting Sort";
             return s;
       }
+      return s;
 }
 
 int ShowIntDataType(string dataType)
@@ -58,13 +59,13 @@ int ShowIntDataType(string dataType)
 	      return 2;
 	if(dataType =="-sorted")	
 		return 3;
-      if(dataType == "-rev")	
+      else	
 		return 4;
 }
 
 string ShowStringNameDataType(int DataType)
 {
-      string s;
+      string s = "\0";
       if(DataType == 1)
       {
             s = "Randomize";
@@ -85,5 +86,6 @@ string ShowStringNameDataType(int DataType)
             s = "Reversed";
             return s;
       }
+      return s;
 }
 

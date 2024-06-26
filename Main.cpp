@@ -1,5 +1,6 @@
 #include "Header.h"
 
+
 // Function to find and execute the appropriate sorting algorithm
 void FindSort(int *arr, int n, string nameSort, long long &time, long long &comp)
 {
@@ -61,11 +62,11 @@ void FindSort(int *arr, int n, string nameSort, long long &time, long long &comp
       }
       else if(nameSort == "radix-sort")
       {
-            auto start = high_resolution_clock::now();
-            RadixSort(arr, n, comp);
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<microseconds>(end - start);
-            time = duration.count();
+            // auto start = high_resolution_clock::now();
+            // RadixSort(arr, n, comp);
+            // auto end = high_resolution_clock::now();
+            // auto duration = duration_cast<microseconds>(end - start);
+            // time = duration.count();
       }
       else if(nameSort == "counting-sort")
       {
@@ -99,6 +100,39 @@ void FindSort(int *arr, int n, string nameSort, long long &time, long long &comp
             auto duration = duration_cast<microseconds>(end - start);
             time = duration.count();
       }
+}
+
+
+bool Write_File(int a[], int n, string output)
+{
+      ofstream out(output);
+      if(!out.is_open()) return 0;
+      out << n << endl;
+
+
+      for(int i = 0; i < n; i++)
+      {
+            out << a[i] << " ";
+      }
+
+
+      out.close();
+      return 1;
+}
+
+bool Read_File(int *&a, int &n, string input)
+{
+      ifstream in(input);
+
+      if(!in.is_open()) return 0;
+      in >> n;
+      a = new int[n];
+      for(int i = 0; i < n; i++)
+      {
+            in >> a[i];
+      }
+      in.close(); 
+      return 1;     
 }
 
 
@@ -138,37 +172,7 @@ void OutTimeAndComp(long long time, long long comp, string parameter)
 }
 
 
-bool Write_File(int a[], int n, string output)
-{
-      ofstream out(output);
-      if(!out.is_open()) return 0;
-      out << n << endl;
 
-
-      for(int i = 0; i < n; i++)
-      {
-            out << a[i] << " ";
-      }
-
-
-      out.close();
-      return 1;
-}
-
-bool Read_File(int *&a, int &n, string input)
-{
-      ifstream in(input);
-
-      if(!in.is_open()) return 0;
-      in >> n;
-      a = new int[n];
-      for(int i = 0; i < n; i++)
-      {
-            in >> a[i];
-      }
-      in.close(); 
-      return 1;     
-}
 
 //Command 1
 //Example: a.exe -a selection-sort input.txt -both

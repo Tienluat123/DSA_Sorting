@@ -354,7 +354,7 @@ void CountingSort (int *arr, int n, long long &comp)
         }
     }
     
-    int *count = new int[maxValue + 1] {0};
+    int *count = new int[maxValue + 1]{0};
     int *output = new int[n]{0};
     
     // Count the occurrences of each value

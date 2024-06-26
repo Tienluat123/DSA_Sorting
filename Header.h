@@ -16,12 +16,8 @@ using namespace std;
 using namespace std::chrono;
 
 template <class T>
-void Swap(T &a, T &b)
-{
-	T x = a;
-	a = b;
-	b = x;
-}
+void Swap(T &a, T &b);
+
 
 //-------------------------------------------------
 

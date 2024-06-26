@@ -1,5 +1,4 @@
 ﻿#include "Header.h"
-using namespace std;
 
 template <class T>
 void Swap(T &a, T &b)
