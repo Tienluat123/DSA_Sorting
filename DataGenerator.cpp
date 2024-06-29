@@ -48,7 +48,6 @@ void GenerateNearlySortedData(int a[], int n)
 	}
 
 	srand((unsigned int) time(NULL));
-	
 	for (int i = 0; i < 10; i ++)
 	{
 		int r1 = rand() % n;
@@ -77,3 +76,5 @@ void GenerateData(int a[], int n, int dataType)
 		printf("Error: unknown data type!\n");
 	}
 }
+
+

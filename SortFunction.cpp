@@ -82,15 +82,19 @@ void BubbleSort(int *arr, int n, long long &comp)
 {
     // Perform n-1 passes through the array
     for (int i = n - 1; ++comp && i > 0; i--) 
-    {    	
+    {
+        bool swaped = 0;	
         // Swap adjacent elements if they are in the wrong order
         for (int j = 0; ++comp && j < i; j++) 
         {
             if (++comp && arr[j] > arr[j + 1]) 
             {
                 Swap (arr[j], arr[j + 1]);
+                swaped = 1;
             }
         }
+        if(comp++ && swaped == 0)
+            break;
     }
 }
 
@@ -250,27 +254,54 @@ void MergeSort(int *arr, int n, int left, int right, long long &comp)
 }
 
 //7
-// Function to partition the array for quick sort
-int Partition(int *arr, int low, int high, long long &comp) 
-{
-    int pivot = arr[low];
+
+// Function to select pivot using Median of Three method
+int medianOfThree(int arr[], int low, int high, long long &comp) {
+    // Calculate the middle index
+    int mid = low + (high - low) / 2;
+
+    // Sort arr[low], arr[mid], arr[high] to ensure arr[low] <= arr[mid] <= arr[high]
+    if (++comp && arr[low] > arr[mid]) {
+        swap(arr[low], arr[mid]);
+    }
+    if (++comp && arr[low] > arr[high]) {
+        swap(arr[low], arr[high]);
+    }
+    if (++comp && arr[mid] > arr[high]) {
+        swap(arr[mid], arr[high]);
+    }
+
+    // Swap arr[mid] (now the median) with arr[high] to set arr[high] as the pivot
+    swap(arr[mid], arr[high]);
+
+    // Return the pivot value (which is now arr[high])
+    return arr[high];
+}
+
+// Function to partition the array around the pivot
+int Partition(int arr[], int low, int high, long long &comp) {
+    // Select pivot using medianOfThree function
+    int pivot = medianOfThree(arr, low, high, comp);
+
+    // Initialize index i to point to the end of the lower part of the array
     int i = low - 1;
-    
-    // Rearrange elements based on the pivot
-    for (int j = low; ++comp && j < high; j++) 
-    {
-        if (++comp && arr[j] < pivot) 
-        {
+
+    // Iterate through each element from low to high - 1
+    for (int j = low; ++comp && j < high; j++) {
+        // If element at j is less than pivot, swap it with element at i+1 and move i forward
+        if (arr[j] < pivot) {
             i++;
-            Swap(arr[i], arr[j]);
+            swap(arr[i], arr[j]);
         }
     }
-    
-    // Place the pivot at the correct position
-    Swap(arr[i + 1], arr[high]);
-    
+
+    // Finally, swap the pivot (currently at arr[high]) with the element next to i
+    swap(arr[i + 1], arr[high]);
+
+    // Return the index of the pivot element
     return i + 1;
 }
+
 
 // Function to perform quick sort on an array
 void QuickSort(int *arr, int n, int low, int high, long long &comp) 
@@ -285,9 +316,40 @@ void QuickSort(int *arr, int n, int low, int high, long long &comp)
 }
 
 //8
-// Function to perform radix sort on an array
-void RadixSort (int *arr, int n, int digit, long long &comp) 
+int getMax(int *arr, int n, long long &comp) 
 {
+    int max = arr[0];
+
+    for (int i = 1; ++comp && i < n; i++) 
+    {
+        if (++comp && arr[i] > max) 
+        {
+            max = arr[i];
+        }
+    }
+
+    return max;
+}
+
+int getDigit(int number, long long &comp) 
+{
+    int digit = 0;
+
+    while (++comp && number > 0) 
+    {
+        number /= 10;
+        digit++;
+    }
+
+    return digit;
+}
+
+// Function to perform radix sort on an array
+void RadixSort(int *arr, int n, long long &comp) 
+{
+    int maxValue = getMax(arr, n, comp);
+    int digit = getDigit(maxValue, comp);
+
     for (int i = 0; ++comp && i < digit; i++) 
     {
         int *count = new int[10] {0};

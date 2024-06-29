@@ -68,7 +68,7 @@ void FindSort(int *arr, int n, string nameSort, long long &time, long long &comp
       else if(nameSort == "radix-sort")
       {
             auto start = high_resolution_clock::now();
-            RadixSort(arr, 0, n, comp);
+            RadixSort(arr, n, comp);
             auto end = high_resolution_clock::now();
             auto duration = duration_cast<microseconds>(end - start);
             time = duration.count();
@@ -143,22 +143,22 @@ bool Read_File(int *&a, int &n, string input)
 
 void WriteGeneratedInput(int a[], int n, int i)
 {
-      if(i == 1) 
+      if(i == 0) 
       {
             string s = "input_1.txt";
             Write_File(a, n, s);
       }
-      else if(i == 2)
+      else if(i == 1)
       {
             string s = "input_2.txt";
             Write_File(a, n, s);
       }
-      else if(i == 3)
+      else if(i == 2)
       {
             string s = "input_3.txt";
             Write_File(a, n, s);
       }
-      else if(i == 4)
+      else if(i == 3)
       {
             string s = "input_4.txt";
             Write_File(a, n, s);
@@ -187,7 +187,7 @@ void Command_1(char* arrayStr[])
       int *a = NULL;
       int n, data = 0;
       long long time = 0;
-      long long comp;
+      long long comp = 0;
 
 
       if(Read_File(a, n, arrayStr[3]) == 0)
@@ -221,17 +221,19 @@ void Command_2(char* arrayStr[])
       int *a = NULL;
       int n = stoi(arrayStr[3]);
       a = new int[n];
-      long long time;
-      long long comp;
+      long long time = 0;
+      long long comp = 0;
+
+
       int dataType = ShowIntDataType(arrayStr[4]);
       GenerateData(a, n, dataType);
-
-
       Write_File(a, n, "input.txt");
-      cout << "Algorithm: " << ShowNameSort(arrayStr[2]) << endl;
       FindSort(a, n, arrayStr[2], time, comp);
+
+
+      cout << "Algorithm: " << ShowNameSort(arrayStr[2]) << endl;
       cout << "Input size: " << n << endl;
-      cout << "Input order: " << arrayStr[4] << endl;
+      cout << "Input order: " << ShowStringNameDataType(dataType) << endl;
       cout << "_______________________" << endl;
       OutTimeAndComp(time, comp, arrayStr[5]);
 
@@ -256,12 +258,12 @@ void Command_3(char* arrayStr[])
       {
             int *a = NULL;
             a = new int[n];
-            long long time;
-            long long comp;
+            long long time = 0;
+            long long comp = 0;
             GenerateData(a, n, i);
             WriteGeneratedInput(a, n, i);
-
             FindSort(a, n, arrayStr[2], time, comp);
+
 
             cout << "Input order: " << ShowStringNameDataType(i) << endl;
             cout << "_______________________" << endl;
@@ -277,13 +279,12 @@ void Command_3(char* arrayStr[])
  //Example: a.exe -c selection-sort selection-sort input.txt
 void Command_4(char* arrayStr[])
 {
-      cout << 1;
       cout << "COMPARE MODE" << endl;
 
       int* array_1;
       int* array_2;
-      long long comp_1, comp_2;
-      long long time_1, time_2;
+      long long comp_1 = 0, comp_2 = 0;
+      long long time_1 = 0, time_2 = 0;
       int n;
 
       Read_File(array_1, n, arrayStr[4]);
@@ -321,8 +322,8 @@ void Command_5(char* arrayStr[])
 
       int* array_1;
       int* array_2;
-      long long comp_1, comp_2;
-      long long time_1, time_2;
+      long long comp_1 = 0, comp_2 = 0;
+      long long time_1 = 0, time_2 = 0;
       int n = stoi(arrayStr[4]);
       array_1 = new int[n];
       array_2 = new int[n];

@@ -48,19 +48,33 @@ string ShowNameSort(string nameSort)
             s = "Counting Sort";
             return s;
       }
+      if(nameSort == "binary-insertion-sort")
+      {
+            s = "Binary Insertion Sort";
+      }
+      if(nameSort == "flash-sort")
+      {
+            s = "Flash Sort";
+      }
+      if(nameSort == "shaker-sort")
+      {
+            s = "Shaker Sort";
+      }
+        
       return s;
 }
+
 
 int ShowIntDataType(string dataType)
 {
       if(dataType == "-rand")	
 		return 0;
 	if(dataType == "-nsorted")	
-	      return 1;
-	if(dataType =="-sorted")	
-		return 2;
+	      return 3;
+	if(dataType == "-sorted")	
+		return 1;
       else	
-		return 3;
+		return 2;
 }
 
 string ShowStringNameDataType(int DataType)
@@ -71,17 +85,17 @@ string ShowStringNameDataType(int DataType)
             s = "Randomize";
             return s;   
       }
-      if(DataType == 1)
+      if(DataType == 3)
       {
             s = "Nearly Sorted";
             return s;
       }
-      if(DataType == 2)
+      if(DataType == 1)
       {
             s = "Sorted";
             return s;
       }
-      if(DataType == 3)
+      if(DataType == 2)
       {
             s = "Reversed";
             return s;
