@@ -1,12 +1,13 @@
 #include "Header.h"
-
+#include <string.h>
 //How to used
 
 //Command
 //g++ -std=c++17 Main.cpp SortFunction.cpp ShowName.cpp DataGenerator.cpp -o <name>
-//./<name> -a quick-sort 7000 -comp 
+//./<name> -a quick-sort 7000 -comp
 
 // Function to find and execute the appropriate sorting algorithm
+using namespace std;
 void FindSort(int *arr, int n, string nameSort, long long &time, long long &comp)
 {
       if(nameSort == "selection-sort")
@@ -136,14 +137,14 @@ bool Read_File(int *&a, int &n, string input)
       {
             in >> a[i];
       }
-      in.close(); 
-      return 1;     
+      in.close();
+      return 1;
 }
 
 
 void WriteGeneratedInput(int a[], int n, int i)
 {
-      if(i == 0) 
+      if(i == 0)
       {
             string s = "input_1.txt";
             Write_File(a, n, s);
@@ -270,9 +271,9 @@ void Command_3(char* arrayStr[])
             OutTimeAndComp(time, comp, arrayStr[4]);
 
 
-            delete []a; 
+            delete []a;
             cout << endl;
-      } 
+      }
 }
 
  //Command 4
@@ -360,45 +361,44 @@ void Command_5(char* arrayStr[])
 }
 
 
-//Number of element in input string: numStr.
+//Number of element in input string:
+
 //Element in input string: arrayStr[].
-//Ex: a.exe -a radix-sort input.txt -both
+//Ex: a.exe -a radix-sort input.txt -botnumStrh
 //numStr = 5.
 //arrayStr[] = {a.exe, -a, radix-sort, input.txt, -both};
-int main(int numStr, char* arrayStr[])
-{
-      string  mode = arrayStr[1];
-      if(mode == "-a") 
-      {
-            if(numStr == 5)
+int main(int argc, char* argv[]){
+    if(strcmp(argv[1], "-a") == 0)
+    {
+        if(argc == 5)
+        {
+            if(argv[3][0] <= '9' && argv[3][0] >= '0')
             {
-                  if(arrayStr[3][0] <= '9' && arrayStr[3][0] >= '0')
-                  {
-                        Command_3(arrayStr);
-                  }
-                  else
-                  { 
-                        Command_1(arrayStr);
-                  }
+                Command_3(argv);
+            }
+            else
+            {
+                Command_1(argv);
+            }
 
-            }
-            else if(numStr == 6)
-            {
-                  Command_2(arrayStr);
-            }
-      }
-      else if(mode == "-c")
-      {
-            if(numStr == 5)
-            {
-                  Command_4(arrayStr);
-            }
-            else if(numStr == 6)
-            {
-                  Command_5(arrayStr);
-            }
-      }
-      return 0;
+        }
+        else if(argc == 6)
+        {
+            Command_2(argv);
+        }
+    }
+    else if(strcmp(argv[1], "-c") == 0)
+    {
+        if(argc == 5)
+        {
+            Command_4(argv);
+        }
+        else if(argc == 6)
+        {
+            Command_5(argv);
+        }
+    }
+    return 0;
 }
 
 
