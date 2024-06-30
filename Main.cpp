@@ -304,7 +304,7 @@ void Command_4(char* arrayStr[])
       cout << "Running time: ";
       cout << setw(15) << left << fixed << time_1 << setprecision(7);
       cout << setw(3) << left << "|";
-      cout << fixed << time_2 << setprecision(7) << ("    (measured in seconds)") << endl;
+      cout << fixed << time_2 << setprecision(7) << ("    (measured in microseconds)") << endl;
       cout << "Comparisions: ";
       cout << setw(15) << left << comp_1;
       cout << setw(3) << left << "|";
@@ -349,7 +349,7 @@ void Command_5(char* arrayStr[])
       cout << "Running time: ";
       cout << setw(15) << left << fixed << time_1 << setprecision(7);
       cout << setw(3) << left << "|";
-      cout << fixed << time_2 << setprecision(7) << ("    (measured in seconds)") << endl;
+      cout << fixed << time_2 << setprecision(7) << ("    (measured in microseconds)") << endl;
       cout << "Comparisions: ";
       cout << setw(15) << left << comp_1;
       cout << setw(3) << left << "|";

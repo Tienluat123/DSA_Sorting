@@ -256,7 +256,7 @@ void MergeSort(int *arr, int n, int left, int right, long long &comp)
 //7
 
 // Function to select pivot using Median of Three method
-int medianOfThree(int arr[], int low, int high, long long &comp) {
+int medianOfThree(int *arr, int low, int high, long long &comp) {
     // Calculate the middle index
     int mid = low + (high - low) / 2;
 
